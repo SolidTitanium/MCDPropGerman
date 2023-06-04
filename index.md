@@ -249,6 +249,33 @@ $$
 
 donde $y$ es el etiquetado verdadero codificado como $1$ o $0$, $\^{y}$ es el etiquetado codificado como $-1$ o $1$ y $o$ son los valores devueltos por la red y $\sigma$ denota la probabilidad estimada.
 
+A las funciones de pérdida les pedimos que sean diferenciables en casi todos sus puntos, es justamente el gradiente lo que nos ayudará a ajustar los pesos y sesgos de la red neuronal. Recordemos que buscamos encontrar el minimizar el error entre las etiquetas predecidas y las reales, así tenemos en nuestras manos un problema de cálculo multivariable.
+
+Nuestra función de error puede verse como una función $\mathcal{J}\left(w, b, x,y\right)$ donde $w$ y $b$ son los pesos y sesgos de la red respectivamente, $x$ son los datos de entrada que otorgamos a la red y $y$ es la etiqueta real que le corresponde a los datos. Supongamos que disponemos de $N$ pares $(x_{t},y_{t})$ con $t\in\left\{1, 2, \dots, N\right\}$ de datos y etiquetas, entonces el error de nuestra red despues de propagar cada dato a traves de ella se expresa:
+
+$$
+\mathcal{J}\left(w,b\right) = \frac{1}{N}\sum_{t=1}^{N}\mathcal{J}\left(w,b,x_{t},y_{t}\right)
+$$
+
+Y con esto podemos describir el descenso de gradiente para cada peso $w_{ij}^{l}$ y cada sesgo $b_{i}^{l}$ como sigue:
+
+$$
+\begin{align*}
+w_{ij}^{l} &= w_{ij}^{l}-\alpha\frac{\partial}{\partial w_{ij}^{l}}\mathcal{J}\left(w,b\right) \\
+b_{i}^{l} &= b_{i}^{l}-\alpha\frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(w,b\right)
+\end{align*}
+$$
+
+Donde $\alpha\in\mathbb{R}$ es un paramétro al que llamamos el _paso_ el cual controla que tanto los pesos se ajustaran en la dirección que marca el gradiente (cabe mencionar el ligero abuso de notación para describir que actualizaremos los pesos).
+
+Queda pendiente el cálculo de las derivadas parciales de la función de pérdida con respecto a los pesos y sesgos, ya que queda mejor ejemplificado con una elección concreta de función de pérdida y función de activación, en la parte dos de este documento, se escogerán estas funciones y se realizara el ajuste de pesos y sesgos paso a paso.
+
+## Conclusión
+
+Como hemos visto, se requiere un desarrollo matemático extenso para entender el funcionamiento de las redes neuronales incluso para los casos más sencillos como el que vimos con anterioridad, existen muchos tipos de redes y arquitecturas distintas y cada una realiza alteraciones en menor o mayor grado al esquema que describimos, no obstante podemos resumir su funcionamiento con el siguiente diagrama de flujo:
+
+![DiagramaFlujoRed](.\src\DiagramaRed3)
+
 # Ejemplificación de problemática.
 
 En este documento se trabaja con la problemática de detectar el tipo (benigno o maligno) de celulas potencialmente cancerígenas, los datos utilizados fueron encontrados en la pagina Kaggle en el siguiente [vínculo](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) y provienen de la digitalización de imagenes obtenidas en el centro de ciencias clínicas en la universidad de Wisconsin, consisten en diez característicos de las células observadas además de un número de serie (ID) y el diagnóstico de la célula (benigno o maligno). Un repaso de los atributos es el siguiente:
@@ -287,3 +314,15 @@ Implementación y detalles
 ## Resultados previstos
 
 Resultados hipotéticos
+
+## Referencias
+
+https://www.researchgate.net/publication/343554356_Mathematical_foundations_of_neural_networks_Implementing_a_perceptron_from_scratch
+
+https://arxiv.org/abs/1702.05659
+
+https://arxiv.org/abs/1806.07366
+
+https://cs.stanford.edu/people/eroberts/courses/soco/projects/neural-networks/History/history1.html
+
+https://www.v7labs.com/blog/neural-networks-activation-functions#3-types-of-neural-networks-activation-functions
