@@ -20,7 +20,7 @@
 - Parte 2
     - Desarrollo matemático detallado del problema elegido
 
-# ¿Qué son las redes neuronales?
+# Redes neuronales
 
 Una red neuronal artificial (o sólo red neuronal) es un sistema computacional que consiste en una colección de nodos a los que llamamos neuronas las cuales están conectadas entre sí, usualmente se encuentran agrupados en capas con las conexiones ocurriendo entre las neuronas de una capa y otra, las neuronas transmiten "señales", las cuales son un número real, entre sus conexiones ajustando la señal de entrada utilizando alguna función no lineal para despues entregar el valor resultando como salida.
 
