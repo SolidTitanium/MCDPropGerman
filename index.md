@@ -211,9 +211,41 @@ $$
 
 Al momento de la implementación estas operaciones deben de realizarse una vez por capa, el vector $s^{P}$ es el resultado que devuelve nuestra red neuronal.
 
-## Propagación hacia atras
+## Descenso de gradiente y propagación hacia atras
 
-Detalles, esquemas y diagramas de flujo
+Ahora queda describir como se lleva a cabo el aprendizaje, como vimos, los pesos y el sesgo son los parámetros fundamentales que se modificarán al momento del entrenamiento, la cuestión ahora es ¿como se modifican para que nuestra red neuronal tenga un buen desempeño? En el entrenamiento supervisado la idea es reducir la diferencia entre los resultados que se obtienen y los que esperamos, así debemos construir una función de pérdida.
+
+La función de pérdida debe de ser una medida de dismilitud, la cual queremos minimizar, la elección de esta medida es crucial para el desempeño de nuestra red y depende fuertemente del uso que se le quiera dar y la problemática a resolver, aquí hay algunas funciones que se utilizan comúnmente (en especial para problemas de clasificación):
+
+- Distancia $\mathcal{L}_{1}$
+
+$$
+d
+$$
+
+- Distancia $\mathcal{L}_{2}$
+
+$$
+yes
+$$
+
+- Pérdida de Chevyshev
+
+$$
+yes
+$$
+
+- Pérdida de Hinge
+
+$$
+yes
+$$
+
+- Pérdida de entropía cruzada logarítmica
+
+$$
+yes
+$$
 
 # Ejemplificación de problemática.
 
