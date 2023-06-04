@@ -152,7 +152,7 @@ Aquí $s_{j}^{(l-1)}$ es la salida del $j$-ésimo nodo de la $(l-1)$-ésima capa
 
 El siguiente diagrama ejemplifica lo anterior.
 
-![DiagramaNodo](.\rsc\placeholder-image.png)
+![DiagramaNodo](.\rsc\DiagramaRed2.png)
 
 Detalles, esquemas y diagramas de flujo
 
