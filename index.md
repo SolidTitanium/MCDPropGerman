@@ -228,7 +228,7 @@ $$
 - Pérdida de Hinge
 
 $$
-\sum_{j}\max\left(0,\frac{1}{2}-\^{y}^{(j)}o^{(j)}\right)
+\sum_{j}\max\left(0,\frac{1}{2}-y^{(j)}o^{(j)}\right)
 $$
 
 - Pérdida de entropía cruzada logarítmica
@@ -237,7 +237,7 @@ $$
 -\sum_{j}y^{(j)}\log\sigma\left(o\right)^{(j)}
 $$
 
-donde $y$ es el etiquetado verdadero codificado como $1$ o $0$, $\^{y}$ es el etiquetado codificado como $-1$ o $1$ y $o$ son los valores devueltos por la red y $\sigma$ denota la probabilidad estimada.
+donde $y$ es el etiquetado verdadero codificado como $1$ o $0$ (En la perdida de Hinge $y$ es el etiquetado codificado como $-1$ o $1$) y $o$ son los valores devueltos por la red y $\sigma$ denota la probabilidad estimada.
 
 A las funciones de pérdida les pedimos que sean diferenciables en casi todos sus puntos, es justamente el gradiente lo que nos ayudará a ajustar los pesos y sesgos de la red neuronal. Recordemos que buscamos encontrar el minimizar el error entre las etiquetas predecidas y las reales, así tenemos en nuestras manos un problema de cálculo multivariable.
 
