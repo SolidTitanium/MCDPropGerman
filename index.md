@@ -1,3 +1,5 @@
+<div style="text-align: justify">
+
 # Libreta en MD para la primera parte del trabajo escrito de la clase de matemáticas.
 
 ## Objetivos:
@@ -99,6 +101,30 @@ Hasta ahora hemos visto el desarrollo y aplicaciones de esta tecnologia y hemos 
 Como hemos visto en secciones anteriores el funcionamiento interno de las redes neuronales esta fuertemente fundamentado en el contexto matemático que se llevo a cabo hace décadas, es decir, las ideas y conceptos que se desarrollaron tiempo antes de su implementación más contemporanea y sin esta teoría no existiria la tecnología a la que estamos tan acostumbrados. Comenzamos entonces por desarrollar un poco de la matemática detras del bloque fundamental por el que estan compuestos estas redes: El nodo o neurona.
 
 ## Neuronas
+
+El nodo o neurona es, por decirlo de alguna manera, la unidad más simple de una red neuronal, en la red los nodos están conectados entre sí de manera jerárquica, donde la salida de algunos nodos es la entrada de otros, podemos entender de manera burda un nodo como un objeto o función que recibe una serie de números reales como entrada, realiza alguna operación y devuelve un número real como salida.
+
+Los nodos se componen de los siguientes elementos:
+
+- Una función de activación $f:\mathbb{R}\rightarrow \mathbb{R}$ , la cual usualmente es la misma para todos los nodos excepto, tal vez, para los nodos que pertenecen a la capa de salida (la cual veremos màs adelante)
+
+- Un peso $w_{j}\in\mathbb{R}$ asociado a cada nodo que se encuentra conectado a su entrada
+
+- Un sesgo $b\in\mathbb{R}$ asociado al nodo en cuestión
+
+Antes de ahondar un poco en el uso y funcionamietno de cada uno de estos componentes es importante mencionar lo que son las capas de una red neuronal.
+
+## Capas
+
+En la mayoria de las redes neuronales, los nodos son agrupados en capas, una capa es una serie de nodos (comúnmente representado como un vector) las cuales no contienen conexiones entre sí, una red neuronal consiste en una serie ordenada de capas cuyos nodos estan conectados de una capa a otra, llamamos a la capa _densa_ si todo nodo de dicha capa contiene una conexión a cada uno de los nodos de la capa siguiente.
+
+En el siguiente diagrama se ilustra un esquema de una red neuronal sencilla con () capas.
+
+diagrama
+
+Además distinguimos la primera capa como la capa de entrada cuyos nodos reciben como entrada el vector de datos que otorgamos a la red neuronal, y llamamos a la última capa la capa de salida, la salida de los nodos de esta capa forma el vector que interpretaremos como el resultado que otorga la red.
+
+## 
 
 Detalles, esquemas y diagramas de flujo
 
