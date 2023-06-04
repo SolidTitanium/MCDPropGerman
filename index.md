@@ -98,7 +98,7 @@ Hasta ahora hemos visto el desarrollo y aplicaciones de esta tecnologia y hemos 
 
 Como hemos visto en secciones anteriores el funcionamiento interno de las redes neuronales esta fuertemente fundamentado en el contexto matemático que se llevo a cabo hace décadas, es decir, las ideas y conceptos que se desarrollaron tiempo antes de su implementación más contemporanea y sin esta teoría no existiria la tecnología a la que estamos tan acostumbrados. Comenzamos entonces por desarrollar un poco de la matemática detras del bloque fundamental por el que estan compuestos estas redes: El nodo o neurona.
 
-## Neuronas
+## Nodo
 
 El nodo o neurona es, por decirlo de alguna manera, la unidad más simple de una red neuronal, en la red los nodos están conectados entre sí de manera jerárquica, donde la salida de algunos nodos es la entrada de otros, podemos entender de manera burda un nodo como un objeto o función que recibe una serie de números reales como entrada, realiza alguna operación y devuelve un número real como salida.
 
@@ -116,13 +116,31 @@ Antes de ahondar un poco en el uso y funcionamietno de cada uno de estos compone
 
 En la mayoria de las redes neuronales, los nodos son agrupados en capas, una capa es una serie de nodos (comúnmente representado como un vector) las cuales no contienen conexiones entre sí, una red neuronal consiste en una serie ordenada de capas cuyos nodos estan conectados de una capa a otra, llamamos a la capa _densa_ si todo nodo de dicha capa contiene una conexión a cada uno de los nodos de la capa siguiente.
 
-En el siguiente diagrama se ilustra un esquema de una red neuronal sencilla con () capas.
+En el siguiente diagrama se ilustra un esquema de una red neuronal sencilla con tres capas, tres nodos en su primera capa, cuatro en su segunda y uno en su tercera.
 
-diagrama
+![DiagramaRedNeuronal](https://miro.medium.com/v2/resize:fit:976/1*oc1gaCFvgWXq_gHQFM63UQ.png)
 
 Además distinguimos la primera capa como la capa de entrada cuyos nodos reciben como entrada el vector de datos que otorgamos a la red neuronal, y llamamos a la última capa la capa de salida, la salida de los nodos de esta capa forma el vector que interpretaremos como el resultado que otorga la red.
 
-## 
+## Funcionamiento de cada nodo
+
+Como vimos con anterioridad los nodos se componen esencialmente de: una función de activación $f$ compartida entre todos los nodos (excepto en la capa de salida), un peso $w_{j}$ para cada nodo conectado a su entrada y un sesgo $b$ específico al nodo. Pasaremos a ver como cada noda transforma sus entradas en su salida.
+
+Análizemos primero la función de acivación, llamamos $f:\mathbb{R}\rightarrow\mathbb{R}$ a la función de activación, esta es la función la cual cada nodo utilizará para modificar la entrada de correspondiante, es decir la sálida del nodo está determinada por $f\left(z\right)$, la elección de la función de activación es de suma importancia para el desempeño de la red neuronal, existen una variedad de funciones y depende de la arquitectura de la red así como del contexto del problema cual debe usarse, ultimadamente, lo único que necesitamos de esta función es que sea derivable en casi todos sus puntos, pero es común tomar en cuenta otras características como simetría, linealidad, concavidad, acotamientos, etc. Aquí hay algunos ejemplos de funciones de activación comunes:
+
+![FuncionesDeActivación](https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/62b18a8dc83132e1a479b65d_neural-network-activation-function-cheat-sheet.jpeg)
+
+Continuamos con los pesos y sesgos. Sea $n_{i}^{l}$ el $i$-ésimo nodo de la $l$-ésima capa, asociamos a este nodo un peso $w_{ij}\in\mathbb{R}$ por cada $j$-ésimo nodo de la $\left(l-1\right)$-ésima capa anterior, y un sesgo $b_{i}\in\mathbb{R}$. La salida $s_{i}^{l}$ de este nodo está determinada por $s_{i}^{l} = f\left(z\right)$ donde $f$ es la función de activación y
+
+$$
+z = b_{i} + w_{i1}s_{1}^{(l-1)} + w_{i2}s_{2}^{(l-1)} + \cdots + w_{im_{(l-1)}}s_{m_{(l-1)}}^{(l-1)} = b_{i} + \sum_{j = 1}^{m_{(l-1)}} w_{ij} s_{j}^{(l-1)}
+$$
+
+Aquí $s_{j}^{(l-1)}$ es la salida del $j$-ésimo nodo de la $(l-1)$-ésima capa anterior y la cual suponemos que contiene $m_{(l-1)}$ nodos.
+
+El siguiente diagrama ejemplifica lo anterior.
+
+![test](.\rsc\dads.JPG)
 
 Detalles, esquemas y diagramas de flujo
 
