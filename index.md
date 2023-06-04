@@ -130,7 +130,7 @@ En la mayoria de las redes neuronales, los nodos son agrupados en capas, una cap
 
 En el siguiente diagrama se ilustra un esquema de una red neuronal sencilla con tres capas, tres nodos en su primera capa, cuatro en su segunda y uno en su tercera.
 
-![DiagramaRedNeuronal](.rsc\placeholder-image.png)
+![DiagramaRedNeuronal](.\rsc\DiagramaRed1.png)
 
 Además distinguimos la primera capa como la capa de entrada cuyos nodos reciben como entrada el vector de datos que otorgamos a la red neuronal, y llamamos a la última capa la capa de salida, la salida de los nodos de esta capa forma el vector que interpretaremos como el resultado que otorga la red.
 
@@ -140,7 +140,7 @@ Como vimos con anterioridad los nodos se componen esencialmente de: una función
 
 Análizemos primero la función de acivación, llamamos $f:\mathbb{R}\rightarrow\mathbb{R}$ a la función de activación, esta es la función la cual cada nodo utilizará para modificar la entrada de correspondiante, es decir la sálida del nodo está determinada por $f\left(z\right)$, la elección de la función de activación es de suma importancia para el desempeño de la red neuronal, existen una variedad de funciones y depende de la arquitectura de la red así como del contexto del problema cual debe usarse, ultimadamente, lo único que necesitamos de esta función es que sea derivable en casi todos sus puntos, pero es común tomar en cuenta otras características como simetría, linealidad, concavidad, acotamientos, etc. Aquí hay algunos ejemplos de funciones de activación comunes:
 
-![FuncionesDeActivación](https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/62b18a8dc83132e1a479b65d_neural-network-activation-function-cheat-sheet.jpeg)
+![FuncionesDeActivación](.\rsc\FuncionesActivacion.jpeg)
 
 Continuamos con los pesos y sesgos. Sea $n_{i}^{l}$ el $i$-ésimo nodo de la $l$-ésima capa, asociamos a este nodo un peso $w_{ij}\in\mathbb{R}$ por cada $j$-ésimo nodo de la $\left(l-1\right)$-ésima capa anterior, y un sesgo $b_{i}\in\mathbb{R}$. La salida $s_{i}^{l}$ de este nodo está determinada por $s_{i}^{l} = f\left(z\right)$ donde $f$ es la función de activación y
 
@@ -152,7 +152,7 @@ Aquí $s_{j}^{(l-1)}$ es la salida del $j$-ésimo nodo de la $(l-1)$-ésima capa
 
 El siguiente diagrama ejemplifica lo anterior.
 
-![test](.\rsc\dads.JPG)
+![test](.\rsc\placeholder-image.png)
 
 Detalles, esquemas y diagramas de flujo
 
