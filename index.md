@@ -154,6 +154,65 @@ El siguiente diagrama ejemplifica lo anterior.
 
 ![DiagramaNodo](.\rsc\DiagramaRed2.png)
 
+En síntesis, se toma el producto de cada entrada del nodo con su peso correspondiente, despues se suman estos valores y se le agrega el sesgo para obtener $z$, finalmente se evalua la función de activación en $z$ para obtener $s_{i}^{l}$ la salida del nodo.
+
+## Propagación hacia adelante
+
+Ahora veremos la descripción matemática de la propagación completa de los datos desde la capa de entrada hasta la de salida. Consideremos la siguiente red neuronal:
+
+- $P$ capas
+
+- $m_{l}$ nodos en su $l$-ésima capa
+
+- Una función de activación $f:\mathbb{R}\rightarrow\mathbb{R}$ la cual supondremos que es la misma para cada nodo
+
+- Todas las capas son densas es decir la salida de cada nodo $n_{j}^{l}$ forma parte de la entrada de cada nodo $n_{i}^{(l+1)}$
+
+- Cada nodo $n_{i}^{l}$ que no pertenesca a la capa de entrada tiene asociados unos pesos $w_{ij}^{l}$ y un sesgo $b_{i}^{l}$
+
+Definimos entonces la matriz de pesos para la $l$-ésima capa como:
+
+$$
+W^{l} = \left(w_{ij} \right)_{i=1, j=1}^{m_{l}, m_{(l-1)}} = 
+\begin{bmatrix}
+    w_{11} & w_{12} & \cdots & w_{1m_{(l-1)}} \\
+    w_{21} & w_{22} & \cdots & w_{2m_{(l-1)}} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    w_{m_{l}1} & w_{m_{l}2} & \cdots & w_{m_{l}m_{(l-1)}}
+\end{bmatrix}
+$$
+
+A su vez definimos el vector de salidas y el vector de sesgos de la $l$-ésima capa como sigue:
+
+$$
+s^{l} =
+\begin{bmatrix}
+    s_{1}^{l} \\
+    s_{2}^{l} \\
+    \vdots \\
+    s_{m_{l}}^{l}
+\end{bmatrix}
+, 
+b^{l} =
+\begin{bmatrix}
+    b_{1}^{l} \\
+    b_{2}^{l} \\
+    \vdots \\
+    b_{m_{l}}^{l}
+\end{bmatrix}
+$$
+
+De esta manera la propagación hacia adelante queda definida por las siguientes dos ecuaciones:
+
+$$
+z^{l} = W^{l}s^{(l-1)} + b^{l} \\
+s^{l} = f\left(z^{l}\right)
+$$
+
+Al momento de la implementación estas operaciones deben de realizarse una vez por capa, el vector $s^{P}$ es el resultado que devuelve nuestra red neuronal.
+
+## Propagación hacia atras
+
 Detalles, esquemas y diagramas de flujo
 
 # Ejemplificación de problemática.
