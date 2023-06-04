@@ -274,7 +274,7 @@ Queda pendiente el cálculo de las derivadas parciales de la función de pérdid
 
 Como hemos visto, se requiere un desarrollo matemático extenso para entender el funcionamiento de las redes neuronales incluso para los casos más sencillos como el que vimos con anterioridad, existen muchos tipos de redes y arquitecturas distintas y cada una realiza alteraciones en menor o mayor grado al esquema que describimos, no obstante podemos resumir su funcionamiento con el siguiente diagrama de flujo:
 
-![DiagramaFlujoRed](.\src\DiagramaRed3)
+![DiagramaFlujoRed](.\rsc\DiagramaRed3.png)
 
 # Ejemplificación de problemática.
 
