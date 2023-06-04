@@ -46,13 +46,13 @@ A continuación se presentan un par de ejemplos concretos:
 
 AlphaZero, CNN (red neuronal convolucional)
 
-![AlphaZeroLogo](https://images.chesscomfiles.com/uploads/v1/chess_term/6679f740-122f-11eb-9cdd-792fd15c63bd.a5fdbee8.5000x5000o.13f0dadcefd9.png)
+![AlphaZeroLogo](.\rsc\AlphaZeroLogo.png)
 
 Este software desarrollado por Google se centra aprender a jugar partidas de juegos generales, principalmente ajedrez, go y shogi, a un nivel donde es capaz de ganar con facilidad incluso a otros sistemas de aprendizaje automático y redes neuronales diseñadas para destacar específicamente en esos juegos. Consiste en una combinación entre una red neuronal de tipo convolucional y un algoritmo de búsqueda de árbol de Monte Carlo, esta combinación le permite aprender de manera muy rápida jugando partidas contra si mismo y alcanzar un nivel profesional en un periodo muy corto de tiempo.
 
 Dall-E 2, Transformer
 
-![Dall-ELogo](https://promptmuse.com/wp-content/uploads/2022/12/OpenAI-Dall-E-2.jpeg)
+![Dall-ELogo](.\rsc\Dall-ELogo.webp)
 
 Desarrollado por OpenAI, Dall-E 2 es un "transformer" (más específicamente un transformer generativo preentrenado o GPT), el cual es un modelo de aprendizaje profundo que se especializa en procesar secuencias de datos tales como lenguaje natural o imágenes. Dall-E 2 utiliza además un modelo de difusión con el que es capaz de generar imágenes en diversos estilos a partir de texto.
 
@@ -130,7 +130,7 @@ En la mayoria de las redes neuronales, los nodos son agrupados en capas, una cap
 
 En el siguiente diagrama se ilustra un esquema de una red neuronal sencilla con tres capas, tres nodos en su primera capa, cuatro en su segunda y uno en su tercera.
 
-![DiagramaRedNeuronal](https://miro.medium.com/v2/resize:fit:976/1*oc1gaCFvgWXq_gHQFM63UQ.png)
+![DiagramaRedNeuronal](.rsc\placeholder-image.png)
 
 Además distinguimos la primera capa como la capa de entrada cuyos nodos reciben como entrada el vector de datos que otorgamos a la red neuronal, y llamamos a la última capa la capa de salida, la salida de los nodos de esta capa forma el vector que interpretaremos como el resultado que otorga la red.
 
