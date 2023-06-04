@@ -251,7 +251,7 @@ donde $y$ es el etiquetado verdadero codificado como $1$ o $0$, $\^{y}$ es el et
 
 A las funciones de pérdida les pedimos que sean diferenciables en casi todos sus puntos, es justamente el gradiente lo que nos ayudará a ajustar los pesos y sesgos de la red neuronal. Recordemos que buscamos encontrar el minimizar el error entre las etiquetas predecidas y las reales, así tenemos en nuestras manos un problema de cálculo multivariable.
 
-Nuestra función de error puede verse como una función $\mathcal{J}\left(w, b, x,y\right)$ donde $w$ y $b$ son los pesos y sesgos de la red respectivamente, $x$ son los datos de entrada que otorgamos a la red y $y$ es la etiqueta real que le corresponde a los datos. Supongamos que disponemos de $N$ pares $(x_{t},y_{t})$ con $t\in\left\{1, 2, \dots, N\right\}$ de datos y etiquetas, entonces el error de nuestra red despues de propagar cada dato a traves de ella se expresa:
+Nuestra función de error puede verse como una función $\mathcal{J}\left(w, b, x,y\right)$ donde $w$ y $b$ son los pesos y sesgos de la red respectivamente, $x$ son los datos de entrada que otorgamos a la red y $y$ es la etiqueta real que le corresponde a los datos. Supongamos que disponemos de $N$ pares $(x_{t},y_{t})$ con $t = 1, 2, \dots, N$ de datos y etiquetas, entonces el error de nuestra red despues de propagar cada dato a traves de ella se expresa:
 
 $$
 \mathcal{J}\left(w,b\right) = \frac{1}{N}\sum_{t=1}^{N}\mathcal{J}\left(w,b,x_{t},y_{t}\right)
