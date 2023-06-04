@@ -1,7 +1,3 @@
----
-<div style="text-align: justify">
----
-
 # Libreta en MD para la primera parte del trabajo escrito de la clase de matemáticas.
 
 ## Objetivos:
