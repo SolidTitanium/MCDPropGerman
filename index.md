@@ -10,16 +10,6 @@
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </head>
 
-# Libreta en MD para la primera parte del trabajo escrito de la clase de matemáticas.
-
-## Objetivos:
-- Parte 1
-    - Definición y ejemplos de redes neuronales
-    - Esquema general de las matemáticas en las redes neuronales (con su respectivo diagrama de flujo)
-    - Elegir problema de interés
-- Parte 2
-    - Desarrollo matemático detallado del problema elegido
-
 # Redes neuronales
 
 Una red neuronal artificial (o sólo red neuronal) es un sistema computacional que consiste en una colección de nodos a los que llamamos neuronas las cuales están conectadas entre sí, usualmente se encuentran agrupados en capas con las conexiones ocurriendo entre las neuronas de una capa y otra, las neuronas transmiten "señales", las cuales son un número real, entre sus conexiones ajustando la señal de entrada utilizando alguna función no lineal para despues entregar el valor resultando como salida.
@@ -299,30 +289,14 @@ El conjunto de datos tambíen otorga varias medias, desviaciones estándar entre
 
 Describir matemáticamente un modelo de clasificación binaria que haga predicciones acerca de si los datos de entrada corresponden al núcleo de una célula pertence a la clase de núcleos de células benignas o malignas.
 
----
-
-## Esquema de red neuronal a implementar
-
-Tipo
-
-Esquema
-
-## Implementación matemática
-
-Implementación y detalles
-
-## Resultados previstos
-
-Resultados hipotéticos
-
 ## Referencias
 
-https://www.researchgate.net/publication/343554356_Mathematical_foundations_of_neural_networks_Implementing_a_perceptron_from_scratch
+1. Raychev, Nikolay. (2020). Mathematical foundations of neural networks. Implementing a perceptron from scratch. Nature. 67-143. 10.37686/nsr.v1i1.74.
 
-https://arxiv.org/abs/1702.05659
+2. Janocha, K., & Czarnecki, W. M. (2017). On Loss Functions for Deep Neural Networks in Classification.
 
-https://arxiv.org/abs/1806.07366
+3. Chen, R. T. Q., Rubanova, Y., Bettencourt, J., & Duvenaud, D. (2019). Neural Ordinary Differential Equations.
 
-https://cs.stanford.edu/people/eroberts/courses/soco/projects/neural-networks/History/history1.html
+4. https://cs.stanford.edu/people/eroberts/courses/soco/projects/neural-networks/History/history1.html
 
-https://www.v7labs.com/blog/neural-networks-activation-functions#3-types-of-neural-networks-activation-functions
+5. https://www.v7labs.com/blog/neural-networks-activation-functions#3-types-of-neural-networks-activation-functions
