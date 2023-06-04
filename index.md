@@ -220,32 +220,34 @@ La función de pérdida debe de ser una medida de dismilitud, la cual queremos m
 - Distancia $\mathcal{L}_{1}$
 
 $$
-d
+||y-o||_{1}
 $$
 
 - Distancia $\mathcal{L}_{2}$
 
 $$
-yes
+||y-o||_{2}^{2}
 $$
 
 - Pérdida de Chevyshev
 
 $$
-yes
+\max_{j}|\sigma\left(o\right)^{(j)}-y^{(j)}|
 $$
 
 - Pérdida de Hinge
 
 $$
-yes
+\sum_{j}\max\left(0,\frac{1}{2}-\^{y}^{(j)}o^{(j)}\right)
 $$
 
 - Pérdida de entropía cruzada logarítmica
 
 $$
-yes
+-\sum_{j}y^{(j)}\log\sigma\left(o\right)^{(j)}
 $$
+
+donde $y$ es el etiquetado verdadero codificado como $1$ o $0$, $\^{y}$ es el etiquetado codificado como $-1$ o $1$ y $o$ son los valores devueltos por la red y $\sigma$ denota la probabilidad estimada.
 
 # Ejemplificación de problemática.
 
