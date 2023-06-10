@@ -352,6 +352,7 @@ $$
 donde $W^{l}$ y $b^{l}$ es la matriz de pesos y el vector de sesgos de la $l$-ésima capa respectivamente, $f$ es nuestra función de activación (la función sigmoide) y $s^{l}$ es la salida de la $l$-ésima capa. Para ejemplificar realizamos el cálculo de la propagación de la capa de entrada a la capa oculta.
 
 $$
+\begin{matrix}
 \begin{bmatrix}
     w_{11}^{1} & w_{12}^{1} & w_{13}^{1} & w_{14}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{18}^{1} & w_{19}^{1} & w_{110}^{1} \\
     w_{21}^{1} & w_{22}^{1} & w_{23}^{1} & w_{24}^{1} & w_{25}^{1} & w_{26}^{1} & w_{27}^{1} & w_{28}^{1} & w_{29}^{1} & w_{210}^{1} \\
@@ -362,6 +363,7 @@ $$
     w_{71}^{1} & w_{72}^{1} & w_{73}^{1} & w_{74}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{78}^{1} & w_{79}^{1} & w_{710}^{1} \\
     w_{81}^{1} & w_{82}^{1} & w_{83}^{1} & w_{84}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{88}^{1} & w_{89}^{1} & w_{810}^{1}
 \end{bmatrix}
+&
 \begin{bmatrix}
     s^{0}_{1} = x^{t}_{1} \\
     s^{0}_{2} = x^{t}_{2} \\
@@ -374,7 +376,9 @@ $$
     s^{0}_{9} = x^{t}_{9} \\
     s^{0}_{10} = x^{t}_{10}
 \end{bmatrix}
+&
 +
+&
 \begin{bmatrix}
     b^{1}_{1} \\
     b^{1}_{2} \\
@@ -385,7 +389,9 @@ $$
     b^{1}_{7} \\
     b^{1}_{8}
 \end{bmatrix}
+&
 =
+&
 \begin{bmatrix}
     z^{1}_{1} \\
     z^{1}_{2} \\
@@ -396,6 +402,7 @@ $$
     z^{1}_{7} \\
     z^{1}_{8}
 \end{bmatrix}
+\end{matrix}
 $$
 ### Descenso de gradiente y propagación hacia atras
 
