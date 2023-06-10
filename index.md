@@ -437,6 +437,7 @@ Nos queda entonces el término $\frac{\partial\mathcal{J}}{\partial s_{1}^{3}}$ 
 $$
 \mathcal{J}\left(w,b,x,y\right) = \frac{1}{2}||y-s^{3}\left(z_{1}^{3}\right)||^{2}
 $$
+
 Hacemos $u = ||y-s^{3}\left(z_{1}^{3}\right)||$ y tenemos $\mathcal{J} = \frac{1}{2}u^{2}$. Definimos:
 
 $$
