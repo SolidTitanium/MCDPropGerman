@@ -432,11 +432,7 @@ $$
 \frac{\partial s}{\partial z} = f\left(z\right)\left(1-f\left(z\right)\right)
 $$
 
-Nos queda entonces el término $\frac{\partial\mathcal{J}}{\partial s_{1}^{3}}$ recordemos que nuestra función de pérdida es:
-
-$$
-\mathcal{J}\left(w,b,x,y\right) = \frac{1}{2}||y-s^{3}\left(z_{1}^{3}\right)||^{2}
-$$
+Nos queda entonces el término $\frac{\partial\mathcal{J}}{\partial s_{1}^{3}}$ recordemos que nuestra función de pérdida el cuadrado de las diferencias.
 
 Hacemos $u = ||y-s^{3}\left(z_{1}^{3}\right)||$ y tenemos $\mathcal{J} = \frac{1}{2}u^{2}$. Definimos:
 
