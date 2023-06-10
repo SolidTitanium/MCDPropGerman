@@ -278,7 +278,7 @@ Como hemos visto, se requiere un desarrollo matemático extenso para entender el
 
 # Ejemplificación de problemática.
 
-En este documento se trabaja con la problemática de detectar el tipo (benigno o maligno) de celulas potencialmente cancerígenas, los datos utilizados fueron encontrados en la pagina Kaggle en el siguiente [vínculo](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) y provienen de la digitalización de imagenes obtenidas en el centro de ciencias clínicas en la universidad de Wisconsin, consisten en diez característicos de las células observadas además de un número de serie (ID) y el diagnóstico de la célula (benigno o maligno). Un repaso de los atributos es el siguiente:
+En este documento se trabaja con la problemática de detectar el tipo (benigno o maligno) de celulas potencialmente cancerígenas, los datos utilizados fueron encontrados en la pagina Kaggle en el siguiente [vínculo](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data) y provienen de la digitalización de imagenes obtenidas en el centro de ciencias clínicas en la universidad de Wisconsin, consisten en diez característicos de las células observadas además de un número de serie (ID), el diagnóstico de la célula (benigno o maligno) y un total de 569 entradas. Un repaso de los atributos es el siguiente:
 
 1. Número ID
 2. Diagnóstico
@@ -299,17 +299,58 @@ El conjunto de datos tambíen otorga varias medias, desviaciones estándar entre
 
 Describir matemáticamente un modelo de clasificación binaria que haga predicciones acerca de si los datos de entrada corresponden al núcleo de una célula pertence a la clase de núcleos de células benignas o malignas.
 
----
+## Red neuronal propuesta
 
-## Esquema de red neuronal a implementar
+Cómo método de implementación del modelo, se propone una red neuronal perceptron multicapa, con un solo nodo en la capa de salida que nos indique si los datos pertenecen a la clase de núcleos de células benignos ($0$) o cancerígenos ($1$), describimos la red neuronal como sigue:
 
-Tipo
+- $3$ capas, una de entrada, una capa oculta y una de salida
 
-Esquema
+- $10$ nodos en la capa de entrada, una por cada variable independiente
+
+- $8$ nodos en la capa oculta
+
+- un único nodo en la capa de salida el cual interpretamos como el resultado de nuestra red (una estimación de la probabilidad de que los datos sean clasificados como cancerígenos)
+
+las capas son densas entre sí con todos sus pesos y sesgos modificables a la hora del entrenamiento de la red, además:
+
+- utilizamos como función de activación la función sigmoide $\frac{1}{1+e^{-x}}$ para todos los nodos de la red neuronal
+
+- utilizamos como función de pérdida la suma (normalizada) de la diferencia de cuadrados entre $y^{t}$ la clasificación real de la $t$-ésima entrada y $s^{3}\left(x^{t}\right)$ la salida de la última capa dada la $t$-ésima entrada, escribimos entonces:
+
+$$
+J\left(w,b,x^{t},y^{t}\right) = \frac{1}{2}||y^{t}-s^{3}\left(x^{t}\right)||^{2}
+$$
+
+Lo anterior para cada par $\left(x^{t},y^{t}\right)$ de datos/clasificación, deseamos minimizar la función de pérdida para todos estos paresm suponiendo $N$ pares, tenemos que:
+
+$$
+\begin{align*}
+  J\left(w,b\right) &= \frac{1}{N}\sum_{t=1}^{N}\frac{1}{2}||y^{t}-s^{3}\left(x^{t}\right)||^{2} \\
+  &= \frac{1}{N}\sum_{t=1}^{N}J\left(w,b,x^{t},y^{t}\right)
+\end{align*}
+$$
 
 ## Implementación matemática
 
-Implementación y detalles
+### Preprocesamiento y consideraciones
+
+Es necesario mencionar las modificaciones que hacemos al conjunto de datos para su correcto manejo con estas tecnologías, primeramente debemos verificar la integridad de los datos para ver si es necesaria alguna imputación o descarte de los mismos, no obstante, el conjunto de datos seleccionado ya tiene una calidad alta y no hay datos faltantes.
+
+Continuamos con la manipulación, descartando las columnas que no se van a utilizar, la medias y desviaciones estandar que acompañan a los datos, despues transformamos la variable indicadora de diabetes de categórica a numérica (binaria) asociando "B" con "$0$" y "M" con "$1$" y la separamos de nuestros datos quedando como un vector $y$.
+
+Otro paso importante es la normalización de los datos, para un mejor entrenamiento y mejorar la tasa de convergencia de la red hacia el punto mínimo de la función de pérdida, utilizamos un proceso de normalización min-max (que en realidad es solo un escalamiento) el cual transforma todos nuestro datos numéricos a un rango entre $0$ y $1$ de manera lineal:
+
+$$
+x_{\text{nueva}} = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}
+$$
+
+Ahora separamos nuestros datos en dos conjuntos, el $80$% ($456$ entradas) de los datos (con sus respectivas etiquetas) se utilizaran en el entrenamiento, y el $20$% ($113$ entradas) restante en la validación hipotética del modelo.
+
+Finalmente al tratárse de un problema de clasificación que involucra un diagnóstico médico es muy probable que el conjunto de datos presente un desbalance considerable entre las clases "M" y "B", una inspección de los datos revela lo anterior como cierto. Para nivelar las clases utilizaremos una técnica de remuestreo con reemplazamiento hasta que la clase con menor cantidad de datos tenga los mismos que la clase con mayor cantidad (oversampling), este remuestreo solo se aplica a los datos que son usados para el entrenamiento.
+
+### Propagación hacia adelante
+
+### Descenso de gradiente y propagación hacia atras
 
 ## Resultados previstos
 
