@@ -308,15 +308,15 @@ las capas son densas entre sí con todos sus pesos y sesgos modificables a la ho
 - utilizamos como función de pérdida la suma (normalizada) de la diferencia de cuadrados entre $y^{t}$ la clasificación real de la $t$-ésima entrada y $s^{3}\left(x^{t}\right)$ la salida de la última capa dada la $t$-ésima entrada, escribimos entonces:
 
 $$
-J\left(w,b,x^{t},y^{t}\right) = \frac{1}{2}||y^{t}-s^{3}\left(x^{t}\right)||^{2}
+\mathcal{J}\left(w,b,x^{t},y^{t}\right) = \frac{1}{2}||y^{t}-s^{3}\left(x^{t}\right)||^{2}
 $$
 
 Lo anterior para cada par $\left(x^{t},y^{t}\right)$ de datos/clasificación, deseamos minimizar la función de pérdida para todos estos paresm suponiendo $N$ pares, tenemos que:
 
 $$
 \begin{align*}
-  J\left(w,b\right) &= \frac{1}{N}\sum_{t=1}^{N}\frac{1}{2}||y^{t}-s^{3}\left(x^{t}\right)||^{2} \\
-  &= \frac{1}{N}\sum_{t=1}^{N}J\left(w,b,x^{t},y^{t}\right)
+  \mathcal{J}\left(w,b\right) &= \frac{1}{N}\sum_{t=1}^{N}\frac{1}{2}||y^{t}-s^{3}\left(x^{t}\right)||^{2} \\
+  &= \frac{1}{N}\sum_{t=1}^{N}\mathcal{J}\left(w,b,x^{t},y^{t}\right)
 \end{align*}
 $$
 
@@ -399,7 +399,79 @@ $$
 $$
 ### Descenso de gradiente y propagación hacia atras
 
+Previamente vimos que la actualización de los pesos y sesgos por descenso de gradiente se realiza según las siguientes ecuaciones:
 
+$$
+\begin{align*}
+  w_{ij}^{l} &= w_{ij}^{l}-\alpha\frac{\partial}{\partial w_{ij}^{l}}\mathcal{J}\left(w,b\right) \\
+  b_{i}^{l} &= b_{i}^{l}-\alpha\frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(w,b\right)
+\end{align*}
+$$
+
+Y quedo pendiente el cálculo del los términos $\frac{\partial}{\partial w_{ij}^{l}}\mathcal{J}\left(w,b\right)$ y $\frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(w,b\right)$, ya elegida la función de pérdida, usamos la regla de la cadena para derivadas parciales para expresar estos términos, ejemplificamos el cálculo de $\frac{\partial\mathcal{J}}{\partial w_{12}^{2}}$:
+
+$$
+\frac{\partial\mathcal{J}}{\partial w_{12}^{2}} = \frac{\partial\mathcal{J}}{\partial s^{3}_{1}}\frac{\partial s^{3}_{1}}{\partial z^{3}_{1}}\frac{\partial z^{3}_{1}}{\partial w_{12}^{2}}
+$$
+
+El último término se simplifica a:
+
+$$
+\frac{\partial z^{3}_{1}}{\partial w_{12}^{2}} = \frac{\partial}{\partial w_{12}^{2}}\left(b_{1}^{1} + \sum_{i=1}^{8}w_{1i}^{1}s_{i}^{2}\right) = s_{2}^{2}
+$$
+
+también tenemos que:
+
+$$
+\frac{\partial s}{\partial z} = f'\left(z\right)
+$$
+
+que en este caso es:
+
+$$
+\frac{\partial s}{\partial z} = f\left(z\right)\left(1-f\left(z\right)\right)
+$$
+
+Nos queda entonces el término $\frac{\partial\mathcal{J}}{\partial s_{1}^{3}}$ recordemos que nuestra función de pérdida es:
+
+$$
+\mathcal{J}\left(w,b,x,y\right) = \frac{1}{2}||y-s^{3}\left(z_{1}^{3}\right)||^{2}
+$$
+Hacemos $u = ||y-s^{3}\left(z_{1}^{3}\right)||$ y tenemos $\mathcal{J} = \frac{1}{2}u^{2}$. Definimos:
+
+$$
+\delta_{i}^{l} = -\left(y-s_{i}^{l}\right)\cdot f'\left(z_{i}^{l}\right)
+$$
+
+Escribimos entonces la expresión completa de la derivada de la función de pérdida:
+
+$$
+\frac{\partial}{\partial W_{ij}^{l}}\mathcal{J}\left(W,b,x,y\right) = s_{j}^{l}\delta_{i}^{l+1}
+$$
+
+Pero entonces, ¿como calculamos las $\delta_{i}^{l}$ para las capas ocultas?, utilzamos la siguiente relación:
+
+$$
+\delta_{j}^{l} = \left(\sum_{i=1}^{s_{l+1}}w_{ij}^{l}\delta_{i}^{l+1}\right)f'\left(z_{j}^{l}\right)
+$$
+
+El cálculo de las derivadas queda como sigue:
+
+$$
+\begin{align*}
+  \frac{\partial}{\partial W_{ij}^{l}}\mathcal{J}\left(W,b,x,y\right) &= s_{j}^{l}\delta_{i}^{l+1} \\
+  \frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(W,b,x,y\right) &= \delta_{i}^{l+1}
+\end{align*}
+$$
+
+Finalmente implementamos el descenso de gradiente como sigue:
+
+$$
+\begin{align*}
+  w_{ij}^{l} &= w_{ij}^{l}-\alpha\frac{\partial}{\partial w_{ij}^{l}}\mathcal{J}\left(w,b\right) \\
+  b_{i}^{l} &= b_{i}^{l}-\alpha\frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(w,b\right)
+\end{align*}
+$$
 
 ## Resultados previstos
 
