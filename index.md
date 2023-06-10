@@ -439,9 +439,7 @@ $$
 \frac{\partial s}{\partial z} = f\left(z\right)\left(1-f\left(z\right)\right)
 $$
 
-Nos queda entonces el término $\frac{\partial\mathcal{J}}{\partial s_{1}^{3}}$ recordemos que nuestra función de pérdida el cuadrado de las diferencias.
-
-Hacemos $u = ||y-s^{3}(z_{1}^{3})||$ y tenemos $\mathcal{J} = \frac{1}{2} u^{2}$. Definimos:
+Nos queda entonces el término $\frac{\partial\mathcal{J}}{\partial s_{1}^{3}}$ recordemos que nuestra función de pérdida el cuadrado de las diferencias. Hacemos $u = ||y-s^{3}(z_{1}^{3})||$ y tenemos $\mathcal{J} = \frac{1}{2} u^{2}$. Definimos:
 
 $$
 \delta_{i}^{l} = -\left(y-s_{i}^{l}\right)\cdot f'\left(z_{i}^{l}\right)
