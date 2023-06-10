@@ -251,8 +251,8 @@ Y con esto podemos describir el descenso de gradiente para cada peso $w_{ij}^{l}
 
 $$
 \begin{align*}
-w_{ij}^{l} &= w_{ij}^{l}-\alpha\frac{\partial}{\partial w_{ij}^{l}}\mathcal{J}\left(w,b\right) \\
-b_{i}^{l} &= b_{i}^{l}-\alpha\frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(w,b\right)
+  w_{ij}^{l} &= w_{ij}^{l}-\alpha\frac{\partial}{\partial w_{ij}^{l}}\mathcal{J}\left(w,b\right) \\
+  b_{i}^{l} &= b_{i}^{l}-\alpha\frac{\partial}{\partial b_{i}^{l}}\mathcal{J}\left(w,b\right)
 \end{align*}
 $$
 
@@ -340,11 +340,70 @@ Finalmente al tratárse de un problema de clasificación que involucra un diagn�
 
 ### Propagación hacia adelante
 
+Al iniciarlizar nuestra red los pesos y sesgos son valores aleatorios y se espera que el entrenamiento subsecuente los ajuste hasta que el modelo sea funcional, ya vimos en un sección anterior que la propagación hacia adelante se ve gobernada por las siguientes ecuaciones:
+
+$$
+\begin{align*}
+  z^{l} = W^{l}s^{(l-1)} + b^{l} \\
+  s^{l} = f\left(z^{l}\right)
+\end{align*}
+$$
+
+donde $W^{l}$ y $b^{l}$ es la matriz de pesos y el vector de sesgos de la $l$-ésima capa respectivamente, $f$ es nuestra función de activación (la función sigmoide) y $s^{l}$ es la salida de la $l$-ésima capa. Para ejemplificar realizamos el cálculo de la propagación de la capa de entrada a la capa oculta.
+
+$$
+\begin{bmatrix}
+    w_{11}^{1} & w_{12}^{1} & w_{13}^{1} & w_{14}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{18}^{1} & w_{19}^{1} & w_{110}^{1} \\
+    w_{21}^{1} & w_{22}^{1} & w_{23}^{1} & w_{24}^{1} & w_{25}^{1} & w_{26}^{1} & w_{27}^{1} & w_{28}^{1} & w_{29}^{1} & w_{210}^{1} \\
+    w_{31}^{1} & w_{32}^{1} & w_{33}^{1} & w_{34}^{1} & w_{35}^{1} & w_{36}^{1} & w_{37}^{1} & w_{38}^{1} & w_{39}^{1} & w_{310}^{1} \\
+    w_{41}^{1} & w_{42}^{1} & w_{43}^{1} & w_{44}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{48}^{1} & w_{49}^{1} & w_{410}^{1} \\
+    w_{51}^{1} & w_{52}^{1} & w_{53}^{1} & w_{54}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{58}^{1} & w_{59}^{1} & w_{510}^{1} \\
+    w_{61}^{1} & w_{62}^{1} & w_{63}^{1} & w_{64}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{68}^{1} & w_{69}^{1} & w_{610}^{1} \\
+    w_{71}^{1} & w_{72}^{1} & w_{73}^{1} & w_{74}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{78}^{1} & w_{79}^{1} & w_{710}^{1} \\
+    w_{81}^{1} & w_{82}^{1} & w_{83}^{1} & w_{84}^{1} & w_{15}^{1} & w_{16}^{1} & w_{17}^{1} & w_{88}^{1} & w_{89}^{1} & w_{810}^{1}
+\end{bmatrix}
+\begin{bmatrix}
+    s^{0}_{1} = x^{t}_{1} \\
+    s^{0}_{2} = x^{t}_{2} \\
+    s^{0}_{3} = x^{t}_{3} \\
+    s^{0}_{4} = x^{t}_{4} \\
+    s^{0}_{5} = x^{t}_{5} \\
+    s^{0}_{6} = x^{t}_{6} \\
+    s^{0}_{7} = x^{t}_{7} \\
+    s^{0}_{8} = x^{t}_{8} \\
+    s^{0}_{9} = x^{t}_{9} \\
+    s^{0}_{10} = x^{t}_{10}
+\end{bmatrix}
++
+\begin{bmatrix}
+    b^{1}_{1} \\
+    b^{1}_{2} \\
+    b^{1}_{3} \\
+    b^{1}_{4} \\
+    b^{1}_{5} \\
+    b^{1}_{6} \\
+    b^{1}_{7} \\
+    b^{1}_{8}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    z^{1}_{1} \\
+    z^{1}_{2} \\
+    z^{1}_{3} \\
+    z^{1}_{4} \\
+    z^{1}_{5} \\
+    z^{1}_{6} \\
+    z^{1}_{7} \\
+    z^{1}_{8}
+\end{bmatrix}
+$$
 ### Descenso de gradiente y propagación hacia atras
+
+
 
 ## Resultados previstos
 
-Resultados hipotéticos
+Despues de una cierta cantidad de iteraciones del proceso de entrenamiento evaluamos el desempeño de nuestra red con el conjunto de validación que separamos anteriormente, si encontramos que la precisión no es aceptable repetimos con una mayor cantidad de iteraciones manteniendo en cuenta los problemas que el sobreajuste puede causar, sin embargo, la naturaleza de la problemática y la arquitectura de la red hare que el modelo sea propenzo a un alto número de falsos negativos, lo cual puede ser contraproducente para el modelo, estos problemas pueden ser detectados con otras medidas de precisión distintas a la que estamos usando o con herramientas como la matriz de confusión, podemos utilizar técnicas de nivelación del conjunto de datos más sofisticadas para tratar de superar esta dificultad y ajustar el umbral de clasificación si vemos aceptable una mayor cantidad de falsos positivos.
 
 ## Referencias
 
